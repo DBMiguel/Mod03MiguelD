@@ -1,12 +1,12 @@
 function Navbar() {
   return (
-    <nav style={{ backgroundColor: "#ddd", padding: "10px" }}>
-      <center> <h2>Mi Tienda React</h2> </center>
-      <ul style={{ listStyle: "none", display: "flex", gap: "10px" }}>
-        <li>Inicio</li>
-        <li>Categorías</li>
-        <li>Contacto</li>
-      </ul>
+    <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#eee" }}>
+      <div style={{ fontWeight: "bold" }}>Inicio</div>
+      <div>
+        <span style={{ marginRight: "15px" }}>Lista</span>
+        <span style={{ marginRight: "15px" }}>Categorías</span>
+        <span>Contacto</span>
+      </div>
     </nav>
   );
 }

@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Container saludo="¡Bienvenid@ Te invito a ver mi catalogo" />
+      <Container saludo="¡Bienvenid@! Te invito a ver mi catálogo" />
     </div>
   );
 }
