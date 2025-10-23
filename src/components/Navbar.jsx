@@ -3,15 +3,30 @@ import CartWidget from "./CartWidget";
 
 function Navbar() {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#0077cc", color: "white" }}>
-      <div style={{ fontWeight: "bold" }}>Inicio </div>
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "10px",
+        backgroundColor: "#0077cc",
+        color: "white"
+      }}
+    >
+      <div style={{ fontWeight: "bold" }}>Inicio</div>
       <div>
-        <span style={{ marginRight: "15px" }}>Nosotros</span>
-        <span style={{ marginRight: "15px" }}>Servicios</span>
-        <span style={{ marginRight: "15px" }}>Contacto</span>
-        <span style={{ marginRight: "15px" }}>Preguntas</span>
-        
-                <CartWidget />
+        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
+          Nosotros
+        </a>
+        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
+          Servicios
+        </a>
+        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
+          Contacto
+        </a>
+        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
+          Preguntas
+        </a>
+        <CartWidget />
       </div>
     </nav>
   );
