@@ -1,14 +1,19 @@
-function Navbar() {
+import React from "react";
+
+import { FaCartPlus } from "react-icons/fa";
+
+
+
+
+function CartWidget() {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#eee" }}>
-      <div style={{ fontWeight: "bold" }}>Inicio</div>
-      <div>
-        <span style={{ marginRight: "15px" }}>Lista</span>
-        <span style={{ marginRight: "15px" }}>Categorías</span>
-        <span>Contacto</span>
-      </div>
-    </nav>
+    <span style={{ marginLeft: "10px" }}>
+
+      <FaCartPlus size={20} />
+           
+      <span style={{ marginLeft: "10px" }}> 3</span>
+    </span>
   );
 }
 
-export default Navbar;
+export default CartWidget;

@@ -1,12 +1,14 @@
+import React from "react";
 import Navbar from "./components/Navbar";
 import Container from "./components/Container";
-import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Container saludo="¡Bienvenid@! Te invito a ver mi catálogo" />
+      <Container />
+      <Footer />
     </div>
   );
 }

@@ -1,14 +1,23 @@
-function Navbar() {
+import React from "react";
+import "../App.css"; 
+
+function Footer() {
   return (
-    <nav style={{ display: "flex", justifyContent: "space-between", padding: "10px", backgroundColor: "#eee" }}>
-      <div style={{ fontWeight: "bold" }}>Inicio</div>
-      <div>
-        <span style={{ marginRight: "15px" }}>Lista</span>
-        <span style={{ marginRight: "15px" }}>Categorías</span>
-        <span>Contacto</span>
+    <footer className="footer">
+      <div className="social-icons">
+        <a href="https://www.facebook.com/">
+          <img src="./public/IMG/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://x.com/">
+          <img src="./public/IMG/Twitter.png" alt="Twitter" />
+        </a>
+        <a href="https://www.instagram.com/">
+          <img src="./public/IMG/Instagram.jpg" alt="Twitter" />
+        </a>
       </div>
-    </nav>
+      <p>© 2025 Mi Tienda. Todos los derechos reservados.</p>
+    </footer>
   );
 }
 
-export default Navbar;
+export default Footer;
