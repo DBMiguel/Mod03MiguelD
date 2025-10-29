@@ -1,32 +1,22 @@
 import React from "react";
-import CartWidget from "./CartWidget";
+import { FaCartPlus } from "react-icons/fa";
+import "../styles/main.css"; // Importa los estilos globales
 
-function Navbar() {
+function Navbar({ cartCount }) {
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "10px",
-        backgroundColor: "#0077cc",
-        color: "white"
-      }}
-    >
-      <div style={{ fontWeight: "bold" }}>Inicio</div>
-      <div>
-        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
-          Nosotros
-        </a>
-        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
-          Servicios
-        </a>
-        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
-          Contacto
-        </a>
-        <a href="" style={{ marginRight: "15px", color: "white", textDecoration: "none" }}>
-          Preguntas
-        </a>
-        <CartWidget />
+    <nav className="navbar">
+      <div className="navbar-logo">Inicio</div>
+
+      <div className="navbar-menu">
+        <a href="">Nosotros</a>
+        <a href="">Servicios</a>
+        <a href="">Contacto</a>
+        <a href="">Preguntas</a>
+
+        <span className="navbar-cart">
+          <FaCartPlus size={20} />
+          <span className="cart-count">{cartCount}</span>
+        </span>
       </div>
     </nav>
   );

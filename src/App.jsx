@@ -1,27 +1,19 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
-import Container from "./components/Container";
-import Footer from "./components/Footer";
+import ItemListContainer from "./ItemListContainer/ItemListContainer";
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
 
-  const handleIncrementCounter = () => {
-    console.log("Botón clic");
-    setCounter(counter + 1);
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
   };
 
   return (
-    <div>
-      <Navbar />
-      <Container />
-      <Footer />
-
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
-        <p>Contador: {counter}</p>
-        <button onClick={handleIncrementCounter}>Incrementar</button>
-      </div>
-    </div>
+    <>
+      <Navbar cartCount={cartCount} />
+      <ItemListContainer onAddToCart={handleAddToCart} />
+    </>
   );
 }
 
