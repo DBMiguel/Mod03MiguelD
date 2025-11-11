@@ -6,7 +6,7 @@ import { products } from "../Data/products";
 function Navbar() {
   const { totalItems } = useContext(CartContext);
 
-  // Obtener categorías únicas de los productos
+  // Filtro para aplicar en los productos
   const categorias = [...new Set(products.map((p) => p.categoria))];
 
   return (
@@ -23,7 +23,13 @@ function Navbar() {
       </div>
 
       <Link to="/cart" className="btn btn-outline-primary position-relative">
-        🛒 Carrito
+      <img 
+    src="/IMG/trash.svg" 
+    alt="Carrito" 
+    style={{ width: "24px", marginRight: "5px" }}
+      />
+
+        Carrito    
         {totalItems() > 0 && (
           <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
             {totalItems()}

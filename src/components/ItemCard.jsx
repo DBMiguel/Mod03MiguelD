@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
-import "./ItemCard.css"; // nuevo archivo CSS
 
 function ItemCard({ product }) {
   const { addItem } = useContext(CartContext);
@@ -12,11 +11,27 @@ function ItemCard({ product }) {
   };
 
   return (
-    <div className="item-card card p-3 shadow-sm">
+    <div
+      className="card p-3 shadow-sm"
+      style={{
+        width: "calc(25% - 16px)", // 4 tarjetas por fila
+        margin: "8px",
+        boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
       <img
         src={product.imagen}
         alt={product.nombre}
-        className="item-card-img"
+        style={{
+          width: "100%",
+          height: "180px",
+          objectFit: "cover",
+          borderRadius: "8px",
+          marginBottom: "8px"
+        }}
       />
       <h5>{product.nombre}</h5>
       <p>{product.descripcion}</p>
