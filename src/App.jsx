@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
-import ItemListContainer from "./ItemListContainer/ItemListContainer";
+import Footer from "./components/Footer";
+import ItemListContainer from "./containers/ItemListContainer";
+import ItemDetailContainer from "./containers/ItemDetailContainer";
+import CartPage from "./pages/CartPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const [cartCount, setCartCount] = useState(0);
-
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
-  };
-
   return (
-    <>
-      <Navbar cartCount={cartCount} />
-      <ItemListContainer onAddToCart={handleAddToCart} />
-    </>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:categoryId" element={<ItemListContainer />} />
+        <Route path="/product/:id" element={<ItemDetailContainer />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

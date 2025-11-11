@@ -1,0 +1,26 @@
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;           /* espacio entre tarjetas */
+    justify-content: center;
+  }
+  
+  .item-list > * {
+    flex: 1 1 calc(25% - 20px); /* 4 items por fila menos el gap */
+    box-sizing: border-box;
+  }
+  
+  /* Responsive: 2 items por fila en tablets */
+  @media (max-width: 992px) {
+    .item-list > * {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+  
+  /* Responsive: 1 item por fila en móviles */
+  @media (max-width: 576px) {
+    .item-list > * {
+      flex: 1 1 100%;
+    }
+  }
+  

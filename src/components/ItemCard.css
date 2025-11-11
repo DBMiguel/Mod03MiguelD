@@ -1,0 +1,29 @@
+
+.item-card {
+    flex: 1 1 calc(25% - 20px); /* 4 por fila menos gap */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .item-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  /* Responsive: 2 por fila en tablets */
+  @media (max-width: 992px) {
+    .item-card {
+      flex: 1 1 calc(50% - 20px);
+    }
+  }
+  
+  /* Responsive: 1 por fila en móviles */
+  @media (max-width: 576px) {
+    .item-card {
+      flex: 1 1 100%;
+    }
+  }
+  

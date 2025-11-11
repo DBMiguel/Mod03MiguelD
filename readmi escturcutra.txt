@@ -1,0 +1,21 @@
+src/
+├── App.jsx
+├── main.jsx
+├── index.css
+├── Data/
+│   └── products.js
+├── context/
+│   └── CartContext.jsx
+├── components/
+│   ├── Navbar.jsx
+│   ├── Footer.jsx
+│   ├── ItemList.jsx
+│   ├── ItemCard.jsx
+│   ├── ItemDetail.jsx
+│   └── ItemCount.jsx
+├── containers/
+│   ├── ItemListContainer.jsx
+│   └── ItemDetailContainer.jsx
+└── pages/
+    ├── CartPage.jsx
+    └── NotFound.jsx

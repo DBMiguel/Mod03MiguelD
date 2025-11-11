@@ -1,23 +1,35 @@
-import React from "react";
-import { FaCartPlus } from "react-icons/fa";
-import "../styles/main.css"; // Importa los estilos globales
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+import { products } from "../Data/products";
 
-function Navbar({ cartCount }) {
+function Navbar() {
+  const { totalItems } = useContext(CartContext);
+
+  // Obtener categorías únicas de los productos
+  const categorias = [...new Set(products.map((p) => p.categoria))];
+
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">Inicio</div>
-
-      <div className="navbar-menu">
-        <a href="">Nosotros</a>
-        <a href="">Servicios</a>
-        <a href="">Contacto</a>
-        <a href="">Preguntas</a>
-
-        <span className="navbar-cart">
-          <FaCartPlus size={20} />
-          <span className="cart-count">{cartCount}</span>
-        </span>
+    <nav className="navbar navbar-light bg-light p-3 d-flex justify-content-between">
+      <div>
+        <Link to="/" className="navbar-brand">
+          Inicio -- Bienvenidos a mi Tienda⚾
+        </Link>
+        {categorias.map((cat) => (
+          <Link key={cat} to={`/category/${cat}`} className="btn btn-link">
+            {cat.toUpperCase()}
+          </Link>
+        ))}
       </div>
+
+      <Link to="/cart" className="btn btn-outline-primary position-relative">
+        🛒 Carrito
+        {totalItems() > 0 && (
+          <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {totalItems()}
+          </span>
+        )}
+      </Link>
     </nav>
   );
 }
