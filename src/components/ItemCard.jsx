@@ -11,31 +11,21 @@ function ItemCard({ product }) {
   };
 
   return (
-    <div
-      className="card p-3 shadow-sm"
-      style={{
-        width: "calc(25% - 16px)", // 4 tarjetas por fila
-        margin: "8px",
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-    >
-      <img
-        src={product.imagen}
-        alt={product.nombre}
-        style={{
-          width: "100%",
-          height: "180px",
-          objectFit: "cover",
-          borderRadius: "8px",
-          marginBottom: "8px"
-        }}
-      />
+    <div className="item-card">
+      <div className="item-card-img-container">
+        <img
+          src={product.imagen}
+          alt={product.nombre}
+          className="item-card-img"
+        />
+      </div>
       <h5>{product.nombre}</h5>
       <p>{product.descripcion}</p>
-      <p className="fw-bold">${product.precio}</p>
+
+      {/* Aquí imprimimos la existencia   no borrar esta linea, la usare para despues, para saber si vale 0 que no imprima el item*/}
+      <p className="fw-bold">Existencia: {product.stock}</p>
+
+      <p className="fw-bold">Precio: ${product.precio}</p>
       <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
     </div>
   );

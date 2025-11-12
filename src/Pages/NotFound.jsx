@@ -1,3 +1,4 @@
+// Pagina de no encontrado
 import React from "react";
 
 function NotFound() {
@@ -5,4 +6,3 @@ function NotFound() {
 }
 
 export default NotFound;
-// Pagina de no encontrado

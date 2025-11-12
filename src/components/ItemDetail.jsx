@@ -15,10 +15,23 @@ function ItemDetail({ product }) {
   return (
     <div className="text-center">
       <h2>{product.nombre}</h2>
-      <img src={product.imagen} alt={product.nombre} style={{ maxWidth: "300px" }} />
+      <img
+        src={product.imagen}
+        alt={product.nombre}
+        style={{ maxWidth: "300px", marginBottom: "15px" }}
+      />
       <p>{product.descripcion}</p>
-      <p className="fw-bold">Precio: ${product.precio}</p>
-      <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
+
+      <div style={{ margin: "10px 0" }}>
+        <p className="fw-bold">
+          Existencia: {product.stock > 0 ? product.stock : "Agotado"}
+        </p>
+        <p className="fw-bold">Precio: ${product.precio}</p>
+      </div>
+
+      {product.stock > 0 && (
+        <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
+      )}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { products } from "../Data/products";
 function Navbar() {
   const { totalItems } = useContext(CartContext);
 
-  // Filtro para aplicar en los productos
+  // Filtro para aplicar en los productos   despues Habilitar un menu para un sbumenú de categorias
   const categorias = [...new Set(products.map((p) => p.categoria))];
 
   return (

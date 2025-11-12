@@ -7,8 +7,6 @@ body {
 .navbar a 
 { color: #fff; text-decoration: none; margin-right: 8px;}
 
-.item-list-container 
-{ padding: 20px; display:flex; gap: 20px; flex-wrap: wrap; justify-content:center; }
 
 .btn-primary 
 { padding: 8px 12px; border-radius:6px; background: #007bff; color:#fff; border:none; cursor:pointer; }
@@ -36,4 +34,3 @@ body {
     object-fit: cover;
   }
 
-  

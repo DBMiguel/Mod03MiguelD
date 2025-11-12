@@ -4,7 +4,7 @@ import { products } from "../Data/products";
 import ItemList from "../components/ItemList";
 
 function ItemListContainer() {
-  const { categoryId } = useParams(); // Para filtrar por categoría
+  const { categoryId } = useParams(); // Para filtrar por categoría pendiente agregar mas items y categorías
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,9 +28,14 @@ function ItemListContainer() {
     });
   }, [categoryId]);
 
-  if (loading) return <p>Cargando productos...</p>;
+  if (loading) return <p style={{ textAlign: "center", marginTop: "20px" }}>Cargando productos...</p>;
 
-  return <ItemList items={items} />;
+  return (
+    <div>
+      <h1 style={{ textAlign: "center", margin: "20px 0" }}>Catálogo de Productos</h1>
+      <ItemList items={items} />
+    </div>
+  );
 }
 
 export default ItemListContainer;

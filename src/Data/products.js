@@ -4,9 +4,9 @@ export const products = [
   {
     id: 1,
     nombre: "Raqueta de tenis",
-    descripcion: "Raqueta profesional con marco de grafito.",
+    descripcion: "Raqueta profesional con marco de grafito // Aqui deje en 0 como Existencia, por si a futuro se debe simular un Stock de 0, para que no aparezca en el listado, pendiente habilitar y crear codigo del mismo, tambien esta pendiente evitar que se agregue items que superen al stock del almacen al carrito de compras ",
     precio: 1000,
-    stock: 10,
+    stock: 0, // Referencia a un producto ya agotado la cual voy a dejar para futuro, de eliminar el item si esta vale 0
     imagen: "/IMG/producto1.jpg",
     categoria: "tenis"
   },
