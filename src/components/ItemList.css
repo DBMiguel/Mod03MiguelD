@@ -1,26 +1,26 @@
-.item-list {
+.item-list-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;                /* espacio entre tarjetas */
-  justify-content: center;  /* alineadas a la izquierda */
-  padding: 20px;            /* evita que el texto de la primera tarjeta se corte */
+  gap: 30px;
+  justify-content: space-evenly;
+  margin-top: 30px; /* espacio entre navbar y la primera fila de items */
+
 }
 
-.item-list > * {
-  flex: 1 1 calc(25% - 20px); /* 4 tarjetas por fila */
-  box-sizing: border-box;
+.item-list-flex > * {
+  flex: 0 0 200px;
 }
 
-/*  Tamaño para las Tablets */
+/* Para tablets ya establecido*/
 @media (max-width: 992px) {
-  .item-list > * {
+  .item-list-flex > * {
     flex: 1 1 calc(50% - 20px);
   }
 }
 
-/* Tamaño para los Móviles */
+/* Para móviles ya establecido */
 @media (max-width: 576px) {
-  .item-list > * {
+  .item-list-flex > * {
     flex: 1 1 100%;
   }
 }

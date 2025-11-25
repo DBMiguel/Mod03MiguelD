@@ -9,7 +9,7 @@ function ItemDetail({ product }) {
 
   const handleAdd = (quantity) => {
     addItem(product, quantity);
-    alert(`Agregaste ${quantity} ${product.nombre} al carrito`);
+    
   };
 
   return (

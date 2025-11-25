@@ -1,4 +1,4 @@
-// Pagina de no encontrado
+
 import React from "react";
 
 function NotFound() {

@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { products } from "../Data/products";
-import ItemList from "../components/ItemList";
 
-function ItemListContainer() {
-  const { categoryId } = useParams(); // Para filtrar por categoría pendiente agregar mas items y categorías
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useProducts } from "../hooks/useProducts";
+import ItemList from "../components/ItemList";
+import { toast } from "react-toastify";
+
+const ItemListContainer = () => {
+  const { categoryId } = useParams();
+  const { data: products, loading, error } = useProducts({ category: categoryId });
+
+  const [notified, setNotified] = useState(false);
+
+  // Filtramos productos visibles
+  const filteredProducts = (products || []).filter(
+    (p) => (!categoryId || p.categoria.toLowerCase() === categoryId.toLowerCase()) && p.stock > 0
+  );
 
   useEffect(() => {
-    // Simulamos llamada asíncrona
-    const fetchProducts = () =>
-      new Promise((resolve) => {
-        setTimeout(() => {
-          if (categoryId) {
-            resolve(products.filter((p) => p.categoria === categoryId));
-          } else {
-            resolve(products);
-          }
-        }, 500); // retraso simulado 500ms
-      });
+    if (!loading && !error && filteredProducts.length === 0 && !notified) {
+      toast.info("No hay productos disponibles en esta categoría");
+      setNotified(true);
+    }
+  }, [loading, error, filteredProducts, notified]);
 
-    setLoading(true);
-    fetchProducts().then((data) => {
-      setItems(data);
-      setLoading(false);
-    });
-  }, [categoryId]);
+  if (loading) return <h2>Cargando productos...</h2>;
 
-  if (loading) return <p style={{ textAlign: "center", marginTop: "20px" }}>Cargando productos...</p>;
+  if (error) {
+    toast.error("Error al cargar los productos");
+    return <h3>Error: {error}</h3>;
+  }
 
-  return (
-    <div>
-      <h1 style={{ textAlign: "center", margin: "20px 0" }}>Catálogo de Productos</h1>
-      <ItemList items={items} />
-    </div>
-  );
-}
+  if (filteredProducts.length === 0) {
+    return <h3>No hay productos disponibles en esta categoría</h3>;
+  }
+
+  return <ItemList items={filteredProducts} />;
+
+};
 
 export default ItemListContainer;

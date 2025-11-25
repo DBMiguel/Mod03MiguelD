@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { products } from "../Data/products";
+
+import { useParams, Navigate } from "react-router-dom";
+import { useProducts } from "../hooks/useProducts";
+import { validateId } from "../utils/validateId";
 import ItemDetail from "../components/ItemDetail";
+import { toast } from "react-toastify";
 
-function ItemDetailContainer() {
+const ItemDetailContainer = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProduct = () =>
-      new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(products.find((p) => p.id === parseInt(id)));
-        }, 500);
-      });
+  
+  if (!validateId(id)) {
+    toast.error("ID de producto inválido");
+    return <Navigate to="/notfound" />;
+  }
 
-    setLoading(true);
-    fetchProduct().then((data) => {
-      setProduct(data);
-      setLoading(false);
-    });
-  }, [id]);
+  const { data: product, loading, error } = useProducts({ id });
 
-  if (loading) return <p>Cargando detalle...</p>;
-  if (!product) return <p>Producto no encontrado</p>;
+  if (loading) return <h2>Cargando detalle...</h2>;
+
+  if (error) {
+    toast.error("Error al cargar el producto");
+    return <h3>Error: {error}</h3>;
+  }
+
+  if (!product || product.stock === 0) {
+    toast.info("Producto no disponible");
+    return <Navigate to="/notfound" />;
+  }
 
   return <ItemDetail product={product} />;
-}
+};
 
 export default ItemDetailContainer;
