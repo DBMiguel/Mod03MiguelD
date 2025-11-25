@@ -33,4 +33,9 @@ body {
     height: 30px;
     object-fit: cover;
   }
-
+  
+  h1, h2, h3, h4, h5 {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  

@@ -1,26 +1,34 @@
 .item-list-flex {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-evenly;
-  margin-top: 30px; /* espacio entre navbar y la primera fila de items */
-
+  justify-content: center;
+  gap: 20px;
 }
 
-.item-list-flex > * {
-  flex: 0 0 200px;
+/* Responsive: 5 columnas */
+.item-card {
+  flex: 1 1 18%;
+  min-width: 200px;
+  max-width: 220px;
 }
 
-/* Para tablets ya establecido*/
-@media (max-width: 992px) {
-  .item-list-flex > * {
-    flex: 1 1 calc(50% - 20px);
+/* Tablets: 4 columnas */
+@media (max-width: 1200px) {
+  .item-card {
+    flex: 1 1 22%;
   }
 }
 
-/* Para móviles ya establecido */
+/* Tablets pequeñas: 3 columnas */
+@media (max-width: 992px) {
+  .item-card {
+    flex: 1 1 30%;
+  }
+}
+
+/* Móviles: 2 columnas */
 @media (max-width: 576px) {
-  .item-list-flex > * {
-    flex: 1 1 100%;
+  .item-card {
+    flex: 1 1 45%;
   }
 }

@@ -1,7 +1,7 @@
 
 export const products = [
   // --- Categoria Tenis ---
-  { id: 1, nombre: "Raqueta de tenis Pro", descripcion: "Raqueta profesional con marco de grafito", precio: 1000, stock: 3, imagen: "/IMG/producto1.jpg", categoria: "tenis" },
+  { id: 1, nombre: "Raqueta de tenis", descripcion: "Raqueta profesional", precio: 1000, stock: 3, imagen: "/IMG/producto1.jpg", categoria: "tenis" },
   { id: 2, nombre: "Pelota de tenis", descripcion: "Pelotas de tenis oficiales", precio: 150, stock: 10, imagen: "/IMG/producto2.jpg", categoria: "tenis" },
   { id: 3, nombre: "Zapatos de tenis", descripcion: "Zapatos cómodos y resistentes", precio: 1200, stock: 5, imagen: "/IMG/producto3.jpg", categoria: "tenis" },
   { id: 4, nombre: "Overgrip", descripcion: "Overgrip para mejorar el agarre", precio: 50, stock: 15, imagen: "/IMG/producto4.jpg", categoria: "tenis" },

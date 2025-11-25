@@ -1,20 +1,12 @@
 import React from "react";
 import ItemCard from "./ItemCard";
+import "../components/ItemList.css";
 
 function ItemList({ items }) {
   if (!items || items.length === 0) return <p>No hay productos</p>;
 
   return (
-    <div
-      className="item-list-flex"
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "20px",
-        justifyContent: "center",
-        padding: "20px 0"
-      }}
-    >
+    <div className="item-list-flex">
       {items.map((product) => (
         <ItemCard key={product.id} product={product} />
       ))}

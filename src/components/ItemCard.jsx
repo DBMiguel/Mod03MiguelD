@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
+import "../components/ItemCard.css"; // Unificando los estilos 
 
 function ItemCard({ product }) {
   const { addItem } = useContext(CartContext);
@@ -11,104 +12,98 @@ function ItemCard({ product }) {
 
   return (
     <div
-      className="item-card"
+    className="item-card"
+    style={{
+      width: "220px",
+      height: "400px",       // altura fija para todas las tarjetas
+      display: "flex",
+      flexDirection: "column",
+      border: "1px solid #ccc",
+      borderRadius: "10px",
+      padding: "10px",
+      backgroundColor: "#fff",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+      transition: "transform 0.2s, box-shadow 0.2s",
+      cursor: "pointer",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = "translateY(-5px)";
+      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.25)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+    }}
+  >
+    {/* Imagen */}
+    <div style={{ textAlign: "center", flexShrink: 0 }}>
+      <img
+        src={product.imagen}
+        alt={product.nombre}
+        style={{
+          width: "100%",
+          height: "180px",     // altura fija de la imagen
+          objectFit: "contain",
+          borderRadius: "5px",
+          backgroundColor: "#f9f9f9",
+          marginBottom: "5px",
+        }}
+      />
+    </div>
+  
+    {/* Información */}
+    <div
       style={{
-        width: "220px",
-        height: "400px",
+        flex: 1,              // toma el espacio restante de la tarjeta
         display: "flex",
-        alignItems: "center",
-        textAlign: "center", 
         flexDirection: "column",
-        border: "1px solid #ccc",
-        borderRadius: "10px",
-        padding: "10px",
-        backgroundColor: "#fff",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-        transition: "transform 0.2s, box-shadow 0.2s",
-        cursor: "pointer",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.25)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+        justifyContent: "space-between", // mantiene los botones siempre al final
+        textAlign: "center",  // centra texto y precios
       }}
     >
-  
-      <div style={{ textAlign: "center", flexShrink: 0 }}>
-        <img
-          src={product.imagen}
-          alt={product.nombre}
+      <div>
+        <h5
           style={{
-            width: "100%",
-            height: "180px",
-            alignItems: "center",
-            textAlign: "center", 
-            objectFit: "contain",
-            borderRadius: "5px",
-            backgroundColor: "#f9f9f9",
-            marginBottom: "5px",
+            margin: "2px 0",
+            fontSize: "1rem",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
           }}
-        />
+          title={product.nombre}
+        >
+          {product.nombre}
+        </h5>
+        <p
+          style={{
+            margin: "2px 0",
+            fontSize: "0.85rem",
+            color: "#555",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+          }}
+          title={product.descripcion}
+        >
+          {product.descripcion}
+        </p>
+        <p className="fw-bold" style={{ margin: "2px 0" }}>
+          Existencia: {product.stock}
+        </p>
+        <p className="fw-bold" style={{ margin: "2px 0" }}>
+          Precio: ${product.precio}
+        </p>
       </div>
-
-
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center", 
-        }}
-      >
-        <div style={{ overflow: "hidden" }}>
-          <h5
-            style={{
-              margin: "2px 0",
-              fontSize: "1rem",
-              whiteSpace: "nowrap",
-              textOverflow: "ellipsis",
-              overflow: "hidden",
-              alignItems: "center",
-              textAlign: "center", 
-            }}
-            title={product.nombre}
-          >
-            {product.nombre}
-          </h5>
-          <p
-            style={{
-              margin: "2px 0",
-              fontSize: "0.85rem",
-              color: "#555",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              alignItems: "center",
-              textAlign: "center", 
-              WebkitBoxOrient: "vertical",
-            }}
-            title={product.descripcion}
-          >
-            {product.descripcion}
-          </p>
-          <p className="fw-bold" style={{ margin: "2px 0" }}>
-            Existencia: {product.stock}
-          </p>
-          <p className="fw-bold" style={{ margin: "2px 0" }}>
-            Precio: ${product.precio}
-          </p>
-        </div>
-
-        <div style={{ marginTop: "auto" }}>
-          <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
-        </div>
+  
+      {/* ItemCount siempre al final */}
+      <div style={{ marginTop: "auto" }}>
+        <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
       </div>
     </div>
+  </div>
+  
   );
 }
 
