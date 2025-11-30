@@ -71,11 +71,15 @@ function CartPage() {
             <p style={{ margin: "5px 0", textAlign: "center", fontSize: "0.9rem" }}>
               {item.descripcion}
             </p>
+
+
+            <p style={{ margin: "5px 0", fontWeight: "bold" }}>Stock: {item.stock}</p>
+
             <p className="fw-bold" style={{ margin: "5px 0" }}>
               Precio: ${item.precio}
             </p>
 
-            {/* Controles de cantidad */}
+
             <div
               style={{
                 display: "flex",
@@ -142,10 +146,10 @@ function CartPage() {
         ))}
       </div>
 
-      {/* Total general */}
+
       <h3 style={{ textAlign: "center", marginTop: "20px" }}>Total: ${total}</h3>
 
-      {/* Vaciar carrito */}
+
       <button
         onClick={clearCart}
         style={{

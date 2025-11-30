@@ -1,41 +1,50 @@
-
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useProducts } from "../hooks/useProducts";
+import { getProducts } from "../services/productService";
 import ItemList from "../components/ItemList";
-import { toast } from "react-toastify";
+import { CartContext } from "../context/CartContext";
 
 const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { cart, addItem, decreaseItem } = useContext(CartContext);
+
   const { categoryId } = useParams();
-  const { data: products, loading, error } = useProducts({ category: categoryId });
-
-  const [notified, setNotified] = useState(false);
-
-  // Filtramos productos visibles
-  const filteredProducts = (products || []).filter(
-    (p) => (!categoryId || p.categoria.toLowerCase() === categoryId.toLowerCase()) && p.stock > 0
-  );
 
   useEffect(() => {
-    if (!loading && !error && filteredProducts.length === 0 && !notified) {
-      toast.info("No hay productos disponibles en esta categoría");
-      setNotified(true);
-    }
-  }, [loading, error, filteredProducts, notified]);
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await getProducts(categoryId);
+        console.log("Productos recibidos:", res);
 
-  if (loading) return <h2>Cargando productos...</h2>;
+        if (res.error) {
+          console.error(res.error);
+          setProducts([]);
+        } else {
+          setProducts(res.data || []); // 🔹 siempre un array
+        }
+      } catch (err) {
+        console.error("Error inesperado:", err);
+        setProducts([]);
+      }
+      setLoading(false);
+    };
 
-  if (error) {
-    toast.error("Error al cargar los productos");
-    return <h3>Error: {error}</h3>;
-  }
+    fetchProducts();
+  }, [categoryId]);
 
-  if (filteredProducts.length === 0) {
-    return <h3>No hay productos disponibles en esta categoría</h3>;
-  }
+  if (loading) return <h2 style={{ textAlign: "center" }}>Cargando productos...</h2>;
+  if (!products || products.length === 0) return <h2 style={{ textAlign: "center" }}>No hay productos disponibles</h2>;
 
-  return <ItemList items={filteredProducts} />;
-
+  return (
+    <ItemList
+      items={products}
+      cart={cart}
+      addItem={addItem}
+      decreaseItem={decreaseItem}
+    />
+  );
 };
 
 export default ItemListContainer;

@@ -51,14 +51,13 @@ function ItemCard({ product }) {
       />
     </div>
   
-    {/* Información */}
     <div
       style={{
-        flex: 1,              // toma el espacio restante de la tarjeta
+        flex: 1,              
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between", // mantiene los botones siempre al final
-        textAlign: "center",  // centra texto y precios
+        justifyContent: "space-between", 
+        textAlign: "center",  
       }}
     >
       <div>
@@ -97,7 +96,8 @@ function ItemCard({ product }) {
         </p>
       </div>
   
-      {/* ItemCount siempre al final */}
+
+  
       <div style={{ marginTop: "auto" }}>
         <ItemCount stock={product.stock} initial={1} onAdd={handleAdd} />
       </div>

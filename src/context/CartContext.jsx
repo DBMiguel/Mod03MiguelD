@@ -7,7 +7,8 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  // Agregar producto al carrito con manejo de stock y toasts
+  
+  
   const addItem = (product, quantity = 1) => {
     let toastMessage = "";
 
