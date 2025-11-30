@@ -1,5 +1,5 @@
 import React from "react";
-import "./Itemlist.css";
+import "./ItemList.css";
 
 const ItemList = ({ items, cart, addItem, decreaseItem }) => {
   return (
