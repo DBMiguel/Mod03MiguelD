@@ -30,7 +30,7 @@ function CartPage() {
         gap: "20px",
       }}
     >
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Carrito</h2>
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Carrito de Compras</h2>
 
       <div
         style={{
